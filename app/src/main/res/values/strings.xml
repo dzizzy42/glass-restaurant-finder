@@ -14,7 +14,7 @@
     <string name="Reviewer1">BILLY BOB JONES</string>
     <string name="Review1">BEFORE I ATE AT CHIPOTLE, I WAS A BOY. NOW I AM A MAN.</string>
     <string name="Reviewer2">Jimmy John Jim</string>
-    <string name="Review2">I can't figure out how to rate 5 stars?!</string>
+    <string name="Review2">I can\'t figure out how to rate 5 stars?!</string>
 
     <!-- FOR WEEKLY HOURS -->
     <string name="Mon">Monday</string>
@@ -24,9 +24,9 @@
     <string name="Fri">Friday</string>
     <string name="Sat">Saturday</string>
     <string name="Sun">Sunday</string>
-    <string name="title_activity_menus">Hello World Immersion</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_reviews">Hello World Immersion</string>
+    <string name="title_activity_menus">Menus</string>
+    <string name="title_activity_reviews">Reviews</string>
     <string name="title_activity_hours">Hours</string>
+    <string name="title_activity_json">JSON</string>
 
 </resources>
