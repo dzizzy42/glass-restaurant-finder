@@ -91,7 +91,13 @@ public class JSONtest extends Activity implements LocationListener{
 
             for (int i = 0; i < arr.length(); i++) {
                 JSONObject curr = arr.getJSONObject(i);
-                cards.add(new CardBuilder(this, CardBuilder.Layout.TEXT).setText( curr.getString("name") ));
+                String s = curr.getString("name") + '\n';
+                s += (curr.getString("is_closed") == "false") ? "is OPEN":"is CLOSED" + '\n';
+                s += curr.getString("distance") + "UNITS from your location\n";
+                s += curr.getString("rating") + " star rating";
+
+                cards.add(new CardBuilder(this, CardBuilder.Layout.TEXT)
+                            .setText( s ));
             }
 
         }
