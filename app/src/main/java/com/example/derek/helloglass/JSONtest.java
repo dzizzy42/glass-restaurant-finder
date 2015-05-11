@@ -2,6 +2,7 @@ package com.example.derek.helloglass;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -96,8 +97,12 @@ public class JSONtest extends Activity implements LocationListener{
                 s += curr.getString("distance") + "UNITS from your location\n";
                 s += curr.getString("rating") + " star rating";
 
+
+
                 cards.add(new CardBuilder(this, CardBuilder.Layout.TEXT)
-                            .setText( s ));
+                            .setText( s )
+                            .addImage( LoadImageFromWebOperations(curr.getString("rating_img_url")) )
+                );
             }
 
         }
@@ -110,6 +115,15 @@ public class JSONtest extends Activity implements LocationListener{
         mCardScroller = new CardScrollView(this);
         mCardScroller.setAdapter(mAdapter);
         setContentView(mCardScroller);
+    }
+    public static Drawable LoadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
