@@ -2,6 +2,8 @@ package com.example.derek.helloglass;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
 import android.location.Location;
@@ -93,7 +95,7 @@ public class JSONtest extends Activity implements LocationListener{
             for (int i = 0; i < arr.length(); i++) {
                 JSONObject curr = arr.getJSONObject(i);
                 String s = curr.getString("name") + '\n';
-                s += (curr.getString("is_closed") == "false") ? "is OPEN":"is CLOSED" + '\n';
+                s += (curr.getString("is_closed") == "false") ? "is OPEN\n":"is CLOSED\n";
                 s += curr.getString("distance") + "UNITS from your location\n";
                 s += curr.getString("rating") + " star rating";
 
@@ -101,7 +103,7 @@ public class JSONtest extends Activity implements LocationListener{
 
                 cards.add(new CardBuilder(this, CardBuilder.Layout.TEXT)
                             .setText( s )
-                            .addImage( LoadImageFromWebOperations(curr.getString("rating_img_url")) )
+                            .addImage( resize(LoadImageFromWebOperations(curr.getString("rating_img_url"))) )
                 );
             }
 
@@ -124,6 +126,11 @@ public class JSONtest extends Activity implements LocationListener{
         } catch (Exception e) {
             return null;
         }
+    }
+    private Drawable resize(Drawable image) {
+        Bitmap b = ((BitmapDrawable)image).getBitmap();
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 100, 50, false);
+        return new BitmapDrawable(getResources(), bitmapResized);
     }
 
     @Override
